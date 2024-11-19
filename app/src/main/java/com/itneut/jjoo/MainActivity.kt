@@ -16,27 +16,36 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Encuentra el NavHostFragment y el NavController
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainer) as NavHostFragment
         val navController = navHostFragment.navController
 
-// Configura la lógica personalizada en el BottomNavigationView
+        // navegación
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+        bottomNavigationView.menu.findItem(R.id.nav_home).setIcon(R.drawable.ic_home_fill)
         bottomNavigationView.setOnItemSelectedListener { item ->
+            bottomNavigationView.menu.findItem(R.id.nav_home).setIcon(R.drawable.ic_home)
+            bottomNavigationView.menu.findItem(R.id.nav_medals).setIcon(R.drawable.ic_medal)
+            bottomNavigationView.menu.findItem(R.id.nav_profile).setIcon(R.drawable.ic_profile)
             when (item.itemId) {
                 R.id.nav_home -> {
+                    item.setIcon(R.drawable.ic_home_fill)
                     navController.navigate(R.id.eventFragment)
                     true
                 }
+
                 R.id.nav_medals -> {
+                    item.setIcon(R.drawable.ic_medal_fill)
                     navController.navigate(R.id.medalFragment)
                     true
                 }
+
                 R.id.nav_profile -> {
-                        navController.navigate(R.id.profileFragment)
-                        true
+                    item.setIcon(R.drawable.ic_profile_fill)
+                    navController.navigate(R.id.profileFragment)
+                    true
                 }
+
                 else -> false
             }
         }
