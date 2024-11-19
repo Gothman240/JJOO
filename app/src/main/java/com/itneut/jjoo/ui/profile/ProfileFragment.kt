@@ -1,4 +1,7 @@
 package com.itneut.jjoo.ui.profile
 
-class ProfileFragment {
+import com.itneut.jjoo.R
+import androidx.fragment.app.Fragment
+
+class ProfileFragment : Fragment(R.layout.fragment_profile){
 }

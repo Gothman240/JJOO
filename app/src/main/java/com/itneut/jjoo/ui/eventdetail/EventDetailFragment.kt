@@ -1,4 +1,7 @@
 package com.itneut.jjoo.ui.eventdetail
 
-class EventDetailFragment {
+import com.itneut.jjoo.R
+import androidx.fragment.app.Fragment
+
+class EventDetailFragment : Fragment(R.layout.fragment_event_detail) {
 }
