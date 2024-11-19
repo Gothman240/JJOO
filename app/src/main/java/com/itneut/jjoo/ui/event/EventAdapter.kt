@@ -1,11 +1,11 @@
-package com.itneut.jjoo
+package com.itneut.jjoo.ui.event
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.itneut.jjoo.R
 import com.itneut.jjoo.data.Event
 
 class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
