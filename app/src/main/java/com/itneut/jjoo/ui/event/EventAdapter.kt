@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.R
 import com.itneut.jjoo.data.Event
 
-class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+class EventAdapter(
+    private val events: List<Event>,
+    private val onEventClick: (Event) -> Unit
+) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvEventName: TextView = itemView.findViewById(R.id.tvEventName)
         val tvEventDate: TextView = itemView.findViewById(R.id.tvEventDate)
@@ -27,6 +30,10 @@ class EventAdapter(private val events: List<Event>) : RecyclerView.Adapter<Event
         holder.tvEventDate.text = "Fecha: ${event.date} - Hora: ${event.hour}"
         holder.tvEventPlace.text = "Lugar: ${event.place}"
         holder.tvEventPrice.text = "Precio: $${event.price}"
+
+        holder.itemView.setOnClickListener {
+            onEventClick(event) // Llama al callback con el evento seleccionado
+        }
     }
 
     override fun getItemCount(): Int = events.size
