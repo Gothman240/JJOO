@@ -14,6 +14,11 @@ class EventFragment: Fragment(R.layout.fragment_event) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvEvents)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = EventAdapter(EventRepository.get())
+        recyclerView.adapter = EventAdapter(EventRepository.get()){ selectedEvent ->
+            // Muestra el Bottom Sheet con el evento seleccionado
+            val bottomSheet = EventBottomSheet.newInstance(selectedEvent)
+            bottomSheet.show(parentFragmentManager, bottomSheet.tag)
+        }
+
     }
 }
