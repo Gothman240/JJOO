@@ -44,6 +44,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     //rv
     implementation(libs.androidx.recyclerview)
+    //picasso
+    implementation(libs.picasso)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     testImplementation(libs.junit)
