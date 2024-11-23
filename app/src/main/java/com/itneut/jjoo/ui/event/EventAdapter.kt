@@ -3,10 +3,13 @@ package com.itneut.jjoo.ui.event
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.R
 import com.itneut.jjoo.data.Event
+import com.squareup.picasso.Picasso
+import java.text.NumberFormat
 
 class EventAdapter(
     private val events: List<Event>,
@@ -17,6 +20,8 @@ class EventAdapter(
         val tvEventDate: TextView = itemView.findViewById(R.id.tvEventDate)
         val tvEventPlace: TextView = itemView.findViewById(R.id.tvEventPlace)
         val tvEventPrice: TextView = itemView.findViewById(R.id.tvEventPrice)
+        val sportLogo: ImageView = itemView.findViewById(R.id.sportLogo)
+        var tvCalification: TextView = itemView.findViewById(R.id.tvCalification)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -26,13 +31,16 @@ class EventAdapter(
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = events[position]
+
         holder.tvEventName.text = event.sport.name
-        holder.tvEventDate.text = "Fecha: ${event.date} - Hora: ${event.hour}"
-        holder.tvEventPlace.text = "Lugar: ${event.place}"
-        holder.tvEventPrice.text = "Precio: $${event.price}"
+        holder.tvEventDate.text = "${event.date}, ${event.hour}"
+        holder.tvEventPlace.text = event.place
+        holder.tvEventPrice.text = NumberFormat.getCurrencyInstance().format(event.price)
+        holder.tvCalification.text = event.sport.stars.toString()
+        Picasso.get().load(event.sport.logo).resize(350, 400).centerInside().into(holder.sportLogo)
 
         holder.itemView.setOnClickListener {
-            onEventClick(event) // Llama al callback con el evento seleccionado
+            onEventClick(event) // Llama al evento seleccionado
         }
     }
 
