@@ -26,10 +26,13 @@ class MedalTableAdapter(private val countries: List<Country>) :
     override fun onBindViewHolder(holder: MedalViewHolder, position: Int) {
         val country = countries[position]
         holder.countryName.text = country.name
-        holder.tvMedals.text = "🥇 Gold: ${country.goldMedals} 🥈 Silver: ${country.silverMedals} 🥉 Bronze: ${country.bronzeMedals}"
+        holder.tvMedals.text = "🥇 ${country.goldMedals} 🥈 ${country.silverMedals} 🥉 ${country.bronzeMedals}"
 
         Picasso.get()
             .load(country.flag)
+            .error(R.drawable.ic_error_image)
+            .resize(450,400)
+            .centerInside()
             .into(holder.countryFlag)
     }
 

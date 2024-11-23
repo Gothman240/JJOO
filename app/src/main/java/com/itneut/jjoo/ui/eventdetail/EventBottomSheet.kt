@@ -53,10 +53,8 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<TextView>(R.id.eventPlace).text = place
         view.findViewById<TextView>(R.id.eventPrice).text = priceFormatter.format(price)
         view.findViewById<TextView>(R.id.eventTime).text = "Empieza a las ${time}h.s"
-        Picasso.get().load(sportLogo).centerCrop()
+        Picasso.get().load(sportLogo).resize(150,150).centerCrop()
             .into(view.findViewById<ImageView>(R.id.eventSportLogo))
         return view
     }
 }
-
-
