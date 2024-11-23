@@ -7,27 +7,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-    </FrameLayout>
-
     <!-- Contenedor para los Fragments -->
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingTop="52dp"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+        app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_graph" />
 
     <!-- Menú de navegación inferior -->
@@ -42,21 +30,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_nav_menu" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="277dp" />
-
-    <SearchView
-        android:layout_width="327dp"
-        android:layout_height="52dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:background="@drawable/rounded_search_view_background"
-        android:queryBackground="@android:color/transparent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
