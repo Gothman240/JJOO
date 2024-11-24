@@ -30,6 +30,7 @@ class MedalTableAdapter(private val countries: List<Country>) :
 
         Picasso.get()
             .load(country.flag)
+            .placeholder(R.drawable.progress_animation)
             .error(R.drawable.ic_error_image)
             .resize(450,400)
             .centerInside()
