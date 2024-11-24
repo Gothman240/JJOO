@@ -3,9 +3,13 @@
     <style name="Base.Theme.JJOO" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/blue</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
 
         <item name="android:fontFamily">@font/plus_jakarta_sans_regular</item>
 
+    </style>
+    <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/blue</item>
     </style>
 
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
