@@ -47,7 +47,7 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         val place = arguments?.getString("place")
         val price = arguments?.getDouble("price")
         val time = arguments?.getString("time")
-        val sportLogo = arguments?.getString("sportLogo")
+        //val sportLogo = arguments?.getString("sportLogo")
 
         // Asignando valores a los elementos de la vista
         view.findViewById<TextView>(R.id.eventTitle).text = "Deporte: $sportName"
@@ -57,8 +57,7 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<TextView>(R.id.eventPrice).text =
             "Precio: ${NumberFormat.getCurrencyInstance().format(price)}"
         view.findViewById<TextView>(R.id.eventTime).text = "Empieza a las ${time}"
-        Picasso.get().load(sportLogo).resize(150, 150).centerCrop()
-            .into(view.findViewById<ImageView>(R.id.eventSportLogo))
+        //Picasso.get().load(sportLogo).resize(150, 150).centerCrop()            .into(view.findViewById<ImageView>(R.id.eventSportLogo))
         return view
     }
 
