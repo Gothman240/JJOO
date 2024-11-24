@@ -12,12 +12,11 @@ import com.itneut.jjoo.repositories.EventRepository
 import com.itneut.jjoo.ui.event.EventAdapter
 import com.itneut.jjoo.ui.event.EventFragment
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var navigationController: NavigationController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         // Encuentra el NavController y BottomNavigationView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment

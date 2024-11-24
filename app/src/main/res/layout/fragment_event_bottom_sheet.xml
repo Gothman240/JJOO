@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_bottom_sheet"
@@ -18,6 +17,7 @@
         android:layout_marginTop="2dp"
         android:text="JJOO 2024"
         android:textSize="20sp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
 
@@ -28,7 +28,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="2dp"
         android:text="10:00"
-        android:textColor="#627e94"
+        android:textColor="@color/secondary_text"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -39,7 +39,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="2dp"
         android:text="Event Date"
-        android:textColor="#627e94"
+        android:textColor="@color/secondary_text"
         app:layout_constraintStart_toStartOf="@+id/eventTime"
         app:layout_constraintTop_toBottomOf="@+id/eventTime" />
 
@@ -49,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="2dp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         android:text="Titulo"
         android:textColor="@color/black"
         android:textSize="20sp"
@@ -62,7 +63,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="2dp"
         android:text="1000"
-        android:textColor="#627e94"
+        android:textColor="@color/secondary_text"
         app:layout_constraintStart_toStartOf="@+id/eventTitle"
         app:layout_constraintTop_toBottomOf="@+id/eventTitle" />
 
@@ -73,7 +74,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginTop="2dp"
         android:text="Place"
-        android:textColor="#627e94"
+        android:textColor="@color/secondary_text"
         app:layout_constraintStart_toStartOf="@+id/eventPrice"
         app:layout_constraintTop_toBottomOf="@+id/eventPrice" />
 
@@ -85,14 +86,16 @@
         android:clipToPadding="true"
         app:cardCornerRadius="12dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        >
 
         <ImageView
             android:id="@+id/eventSportLogo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher" />
+            android:src="@drawable/ic_logo"
+            app:tint="@color/blue"/>
 
     </androidx.cardview.widget.CardView>
 
@@ -131,6 +134,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Comprar Entrada"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +147,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Elige tu Intermediario"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
@@ -162,36 +168,50 @@
             android:id="@+id/radioUltimateEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
             android:layoutDirection="rtl"
             android:paddingHorizontal="12dp"
             android:text="UltimateEvent" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="3%(weekends) or 0.75%(weekdays)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/secondary_text" />
+
         <RadioButton
             android:id="@+id/radioElite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
             android:layoutDirection="rtl"
             android:paddingHorizontal="12dp"
             android:text="Elite" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text"
+            android:layout_marginBottom="8dp"
+            android:text="1%(20:00 - 23:59) or 3%(other times)"/>
 
         <RadioButton
             android:id="@+id/radioTicketPro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
             android:layoutDirection="rtl"
             android:paddingHorizontal="12dp"
             android:text="TicketPro" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/secondary_text"
+            android:layout_marginBottom="8dp"
+            android:text="2% commission"/>
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
