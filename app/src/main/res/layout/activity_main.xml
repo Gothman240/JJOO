@@ -28,7 +28,7 @@
         app:itemTextColor="@color/white"
         app:backgroundTint="@color/blue"
         app:itemIconSize="30dp"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="labeled"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
