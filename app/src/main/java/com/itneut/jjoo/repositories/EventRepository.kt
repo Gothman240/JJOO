@@ -9,7 +9,7 @@ object EventRepository {
         events.add(
             Event(
                 1L,
-                "2024/07/02",
+                "2024-07-02",
                 "10:30",
                 "PSG Stadium",
                 150000.00,
