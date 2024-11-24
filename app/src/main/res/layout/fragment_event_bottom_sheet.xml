@@ -17,6 +17,7 @@
         android:layout_marginStart="14dp"
         android:layout_marginTop="2dp"
         android:text="JJOO 2024"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toTopOf="@+id/cardView" />
@@ -49,9 +50,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="2dp"
-        android:text="Titulo"
+        android:text="Deporte"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="@+id/cardView2" />
 
@@ -131,6 +133,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Comprar Entrada"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -142,6 +146,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="Elige tu Intermediario"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"

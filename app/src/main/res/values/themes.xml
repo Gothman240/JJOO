@@ -11,6 +11,5 @@
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue</item>
     </style>
-
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
 </resources>
