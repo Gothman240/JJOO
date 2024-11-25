@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.repositories.MedalTableRepository
 
-class MedalFragment : Fragment(R.layout.fragment_medal)  {
+class MedalFragment : Fragment(R.layout.fragment_medal) {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

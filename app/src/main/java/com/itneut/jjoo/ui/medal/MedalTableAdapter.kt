@@ -14,8 +14,8 @@ class MedalTableAdapter(private val countries: List<Country>) :
     RecyclerView.Adapter<MedalTableAdapter.MedalViewHolder>() {
     class MedalViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val countryFlag: ImageView = itemView.findViewById(R.id.ivFlag)
-        val countryName: TextView = itemView.findViewById(R.id.tvCountryName)
-        val tvMedals: TextView = itemView.findViewById(R.id.tvMedals)
+        val countryName: TextView = itemView.findViewById(R.id.tvPurchaseDetail)
+        val tvMedals: TextView = itemView.findViewById(R.id.tvPurchaseDate)
 
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MedalViewHolder {
