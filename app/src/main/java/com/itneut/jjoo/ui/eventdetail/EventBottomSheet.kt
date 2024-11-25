@@ -5,8 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.RadioGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.net.ParseException
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.itneut.jjoo.data.Event
@@ -57,6 +60,31 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         view.findViewById<TextView>(R.id.eventPrice).text =
             "Precio: ${NumberFormat.getCurrencyInstance().format(price)}"
         view.findViewById<TextView>(R.id.eventTime).text = "Empieza a las ${time}"
+
+        // Configuración del botón
+        val buyButton = view.findViewById<Button>(R.id.btnBuyTicket)
+        buyButton.isEnabled = false // Inicialmente desactivado
+
+        // Listener del RadioGroup
+        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupIntermediary)
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            if (checkedId != -1) { // Si algún RadioButton está seleccionado
+                buyButton.isEnabled = true // Activar el botón
+            }
+        }
+        // Listener para el botón "Comprar Entrada"
+        buyButton.setOnClickListener {
+            val selectedIntermediary = when (radioGroup.checkedRadioButtonId) {
+                R.id.radioUltimateEvent -> "UltimateEvent"
+                R.id.radioElite -> "Elite"
+                R.id.radioTicketPro -> "TicketPro"
+                else -> "Ninguno"
+            }
+            Toast.makeText(requireContext(), "Compra realizada! $selectedIntermediary", Toast.LENGTH_SHORT).show()
+
+            //Cierra el BottomSheet después de la compra
+            dismiss()
+        }
         //Picasso.get().load(sportLogo).resize(150, 150).centerCrop()            .into(view.findViewById<ImageView>(R.id.eventSportLogo))
         return view
     }
