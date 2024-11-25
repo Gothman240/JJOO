@@ -25,4 +25,12 @@
         android:id="@+id/profileFragment"
         android:name="com.itneut.jjoo.ui.profile.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.itneut.jjoo.ui.login.LogInFragment"
+        android:label="LogInFragment" >
+        <action
+            android:id="@+id/action_logInFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>

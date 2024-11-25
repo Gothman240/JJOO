@@ -12,10 +12,9 @@ object UserRepository {
         users.add(User(1510L, "Diegote", "@12345", "Diego", "Gonzalez", 120000.0, "2018/04/15"))
     }
 
-    fun getUserByNickname(nickname: String): User? {
-        return users.find { it.nickName == nickname }
+    fun getUser(nickname: String, password: String): User? {
+         return users.find { it.nickName == nickname && it.password == password }
     }
-
     // Función para verificar si el usuario está logueado
     fun isLoggedIn(): Boolean {
         return loggedInUser != null
