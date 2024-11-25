@@ -12,16 +12,17 @@ import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 
 class EventAdapter(
-    private val events: List<Event>,
+    private var events: List<Event>, // Cambiado a var para permitir actualizaciones
     private val onEventClick: (Event) -> Unit
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
+
     class EventViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val tvEventName: TextView = itemView.findViewById(R.id.tvEventName)
         val tvEventDate: TextView = itemView.findViewById(R.id.tvEventDate)
         val tvEventPlace: TextView = itemView.findViewById(R.id.tvEventPlace)
         val tvEventPrice: TextView = itemView.findViewById(R.id.tvEventPrice)
         val sportLogo: ImageView = itemView.findViewById(R.id.sportLogo)
-        var tvCalification: TextView = itemView.findViewById(R.id.tvCalification)
+        val tvCalification: TextView = itemView.findViewById(R.id.tvCalification)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -32,6 +33,7 @@ class EventAdapter(
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = events[position]
 
+        // Configura los datos del evento en las vistas
         holder.tvEventName.text = event.sport.name
         holder.tvEventDate.text = "${event.date}, ${event.hour}"
         holder.tvEventPlace.text = event.place
@@ -39,10 +41,17 @@ class EventAdapter(
         holder.tvCalification.text = event.sport.stars.toString()
         Picasso.get().load(event.sport.logo).resize(350, 400).centerInside().into(holder.sportLogo)
 
+        // Configura el clic en el ítem
         holder.itemView.setOnClickListener {
-            onEventClick(event) // Llama al evento seleccionado
+            onEventClick(event)
         }
     }
 
     override fun getItemCount(): Int = events.size
+
+    // Método para actualizar los eventos mostrados
+    fun updateEvents(newEvents: List<Event>) {
+        events = newEvents
+        notifyDataSetChanged() // Actualiza la lista del RecyclerView
+    }
 }
