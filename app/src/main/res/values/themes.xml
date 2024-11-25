@@ -11,6 +11,12 @@
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue</item>
     </style>
+    <style name="CardViewItem">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+    <style name="Background">
+        <item name="android:background">@color/white</item>
+    </style>
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
 
 
