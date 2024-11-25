@@ -4,6 +4,7 @@ import android.widget.Toast
 import com.itneut.jjoo.R
 import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.itneut.jjoo.repositories.UserRepository
 
 class NavigationController(
     private val navController: NavController,
@@ -25,11 +26,11 @@ class NavigationController(
                     true
                 }
                 R.id.nav_profile -> {
-                    if (isLoggedIn()) {
+                    if (UserRepository.isLoggedIn()) {
                         navController.navigate(R.id.profileFragment)
                         true
                     } else {
-                        Toast.makeText(bottomNavigationView.context, "Debes iniciar sesión para acceder al perfil", Toast.LENGTH_SHORT).show()
+                        navController.navigate(R.id.logInFragment)
                         false
                     }
                 }
