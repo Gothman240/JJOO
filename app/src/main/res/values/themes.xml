@@ -8,9 +8,15 @@
         <item name="android:fontFamily">@font/plus_jakarta_sans_regular</item>
 
     </style>
+
     <style name="Widget.App.Button" parent="Widget.MaterialComponents.Button">
         <item name="backgroundTint">@color/blue</item>
     </style>
 
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
+
+    <style name="ThemeOverlay.JJOO.FullscreenContainer" parent="">
+        <item name="fullscreenBackgroundColor">@color/light_blue_600</item>
+        <item name="fullscreenTextColor">@color/light_blue_A200</item>
+    </style>
 </resources>

@@ -54,7 +54,7 @@ class NavigationController(
     }
 
     private fun isLoggedIn(): Boolean {
-        // TODO
+
         return false
     }
 }
