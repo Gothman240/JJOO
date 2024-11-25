@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_bottom_sheet"
     android:clipToPadding="false"
     android:gravity="center_horizontal"
     android:orientation="vertical"
@@ -52,7 +51,6 @@
         android:layout_marginTop="2dp"
         android:fontFamily="@font/plus_jakarta_sans_medium"
         android:text="Titulo"
-        android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:layout_constraintTop_toTopOf="@+id/cardView2" />
@@ -164,19 +162,15 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toBottomOf="@+id/textView2"        >
 
         <RadioButton
             android:id="@+id/radioUltimateEvent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
-            android:layoutDirection="rtl"
-            android:paddingHorizontal="12dp"
-            android:text="UltimateEvent" />
+            android:text="UltimateEvent"
+            style="@style/RadioButton" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -190,13 +184,9 @@
             android:id="@+id/radioElite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
-            android:layoutDirection="rtl"
-            android:paddingHorizontal="12dp"
-            android:text="Elite" />
+            android:text="Elite"
+            style="@style/RadioButton"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -208,13 +198,9 @@
             android:id="@+id/radioTicketPro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
             android:background="@drawable/radio_pill"
-            android:layoutDirection="rtl"
-            android:paddingHorizontal="12dp"
-            android:text="TicketPro" />
+            android:text="TicketPro"
+            style="@style/RadioButton"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
