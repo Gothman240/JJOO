@@ -6,4 +6,11 @@
     <string name="et_usuario">Usuario</string>
     <string name="et_contrasenia">Contraseña</string>
     <string name="btn_iniciar_sesion">Iniciar Sesión</string>
+    <string name="t_ultimate_event">Ultimate Event</string>
+    <string name="t_ultimate_event_commission">3% (sábados y domingos) o 0.75% de comisión</string>
+    <string name="t_elite">Elite</string>
+    <string name="t_elite_commission">1% (20:00 - 23:59) o 3% de comisión</string>
+    <string name="t_ticket_pro">Ticket Pro</string>
+    <string name="t_ticket_pro_commission">2% de comisión</string>
+    <string name="t_app">JJOO 2024</string>
 </resources>

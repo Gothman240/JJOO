@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
         android:layout_marginTop="2dp"
-        android:text="JJOO 2024"
+        android:text="@string/t_app"
         android:textSize="20sp"
         android:fontFamily="@font/plus_jakarta_sans_medium"
         app:layout_constraintStart_toEndOf="@+id/cardView"
@@ -169,14 +169,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_pill"
-            android:text="UltimateEvent"
+            android:text="@string/t_ultimate_event"
             style="@style/RadioButton" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="3%(weekends) or 0.75%(weekdays)"
+            android:text="@string/t_ultimate_event_commission"
             android:textAppearance="@style/TextAppearance.AppCompat.Small"
             android:textColor="@color/secondary_text" />
 
@@ -185,27 +185,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_pill"
-            android:text="Elite"
+            android:text="@string/t_elite"
             style="@style/RadioButton"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
             android:layout_marginBottom="8dp"
-            android:text="1%(20:00 - 23:59) or 3%(other times)"/>
+            android:text="@string/t_elite_commission"/>
 
         <RadioButton
             android:id="@+id/radioTicketPro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/radio_pill"
-            android:text="TicketPro"
+            android:text="@string/t_ticket_pro"
             style="@style/RadioButton"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/secondary_text"
             android:layout_marginBottom="8dp"
-            android:text="2% commission"/>
+            android:text="@string/t_ticket_pro_commission"/>
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
