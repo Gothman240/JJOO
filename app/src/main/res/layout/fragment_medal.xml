@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/Background">
 
 
     <TextView
@@ -13,9 +14,8 @@
         android:layout_marginTop="16dp"
         android:drawablePadding="8dp"
         android:text="@string/title_medal_table"
-        android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"
+        android:fontFamily="@font/plus_jakarta_sans_bold"
         app:drawableStartCompat="@drawable/ic_trophy_medal_table"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

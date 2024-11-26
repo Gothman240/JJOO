@@ -3,7 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    style="@style/Background">
+
+    <TextView
+        android:id="@+id/tvNoResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="@string/title_event_not_found"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:fontFamily="@font/plus_jakarta_sans_medium"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/rvEvents"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout"
@@ -12,19 +29,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/gray">
+        style="@style/Background">
 
         <ImageView
             android:id="@+id/imageView"
+            style="@style/logo"
             android:layout_width="104dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_logo"
-            app:tint="@color/blue"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.326" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingHorizontal="16dp"
+        android:paddingVertical="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

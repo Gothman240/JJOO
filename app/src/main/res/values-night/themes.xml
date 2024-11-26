@@ -2,14 +2,27 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.JJOO" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
-        <!--<item name="colorPrimaryDark">@color/background</item> -->
+        <item name="colorPrimaryDark">@color/background_night</item>
     </style>
 
     <style name="CardView.Dark" parent="Widget.MaterialComponents.CardView">
         <item name="strokeColor">@color/white</item>
         <item name="strokeWidth">22dp</item>
     </style>
+    <style name="CardViewItem">
+        <item name="android:backgroundTint">@color/background_night</item>
+    </style>
+    <style name="Background">
+        <item name="android:background">@color/background_night</item>
+    </style>
 
+    <style name="BottomSheet">
+        <item name="android:background">@color/item_background_night</item>
+    </style>
+    <style name="SearchView"></style>
+    <style name="logo">
+        <item name="tint">@color/secondary_text</item>
+    </style>
     <style name="RadioButton">
         <item name="android:backgroundTint">@color/item_background_night</item>
         <item name="android:layout_marginVertical">4dp</item>
@@ -17,6 +30,7 @@
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:paddingHorizontal">12dp</item>
         <item name="android:layoutDirection">rtl</item>
+        <item name="buttonTint">@color/white</item>
     </style>
 
     <style name="ThemeOverlay.JJOO.FullscreenContainer" parent="">

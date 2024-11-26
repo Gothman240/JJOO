@@ -1,36 +1,40 @@
 package com.itneut.jjoo.ui.login
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
-import android.widget.TextView
+import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.itneut.jjoo.R
-import com.itneut.jjoo.repositories.ValidUsersRepository
-
-class LogInFragment: Fragment(R.layout.fragment_log_in) {
+import com.itneut.jjoo.repositories.UserRepository
 
 
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View? {
-            lateinit var text1: TextView
-            lateinit var text2: TextView
-            lateinit var button: Button
+class LogInFragment : Fragment(R.layout.fragment_log_in) {
 
-            text1.findViewById<TextView>(R.id.EmailAddress)
-            text2.findViewById<TextView>(R.id.Password)
-            button.findViewById<Button>(R.id.ButtonLogin)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val etNickName: EditText = view.findViewById(R.id.etNickName)
+        val etPassword: EditText = view.findViewById(R.id.etPassword)
+        val btnLogin: Button = view.findViewById(R.id.btnLogin)
 
-            button.setOnClickListener {
-                ValidUsersRepository.login(text1, text2)
-            }
-            return super.onCreateView(inflater, container, savedInstanceState)
+        btnLogin.setOnClickListener {
+            // TODO: Implement login logic
+            val nickName = etNickName.text.toString()
+            val password = etPassword.text.toString()
+
+            val user = UserRepository.getUser(nickName, password)
+
+            user?.let {
+                UserRepository.loggedInUser = it
+                Toast.makeText(requireContext(), "Bienvenido ${it.nickName}", Toast.LENGTH_SHORT).show()
+                findNavController().navigate(R.id.action_logInFragment_to_profileFragment)
+            }  ?: Toast.makeText(requireContext(), "Credenciales incorrectas", Toast.LENGTH_SHORT).show()
+
+
         }
 
-
     }
+
+}
