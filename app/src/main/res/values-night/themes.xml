@@ -15,14 +15,14 @@
     <style name="Background">
         <item name="android:background">@color/background_night</item>
     </style>
+    <style name="logo">
+        <item name="tint">@color/secondary_text</item>
+    </style>
 
     <style name="BottomSheet">
         <item name="android:background">@color/item_background_night</item>
     </style>
     <style name="SearchView"></style>
-    <style name="logo">
-        <item name="tint">@color/secondary_text</item>
-    </style>
     <style name="RadioButton">
         <item name="android:backgroundTint">@color/item_background_night</item>
         <item name="android:layout_marginVertical">4dp</item>

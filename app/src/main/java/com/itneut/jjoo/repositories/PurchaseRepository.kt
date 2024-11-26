@@ -19,10 +19,14 @@ object PurchaseRepository {
     }
 
     fun add(purchase: Purchase) {
-        //TODO Implementar solucion para agregar una nueva compra
+        purchases.add(purchase)//TODO Implementar solucion para agregar una nueva compra
+    }
+
+    fun get(userId: Long) : List<Purchase> {
+        return purchases.filter { it.userId == userId } //TODO Implementar solucion para obtener todas las compras
     }
 
     fun get() : List<Purchase> {
-        return emptyList() //TODO Implementar solucion para obtener todas las compras
+        return purchases
     }
 }
