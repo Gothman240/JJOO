@@ -39,7 +39,9 @@ class EventAdapter(
         holder.tvEventPlace.text = event.place
         holder.tvEventPrice.text = NumberFormat.getCurrencyInstance().format(event.price)
         holder.tvCalification.text = event.sport.stars.toString()
-        Picasso.get().load(event.sport.logo).resize(350, 400).centerInside().into(holder.sportLogo)
+        Picasso.get().load(event.sport.logo)
+            .placeholder(R.drawable.progress_animation)
+            .error(R.drawable.ic_error_image).resize(350, 400).centerInside().into(holder.sportLogo)
 
         // Configura el clic en el ítem
         holder.itemView.setOnClickListener {
