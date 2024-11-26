@@ -121,5 +121,9 @@ object EventRepository {
     fun get(): List<Event> {
         return events // Ahora devuelve los eventos reales.
     }
+
+    fun getEventById(eventId: Long): Event? {
+        return events.find { it.id == eventId }
+    }
 }
 

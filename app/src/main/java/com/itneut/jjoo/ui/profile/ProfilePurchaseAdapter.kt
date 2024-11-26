@@ -3,18 +3,17 @@ package com.itneut.jjoo.ui.profile
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.R
 import com.itneut.jjoo.data.Purchase
+import com.itneut.jjoo.repositories.EventRepository
 
 class PurchaseAdapter(
     private val purchases: List<Purchase>
 ) : RecyclerView.Adapter<PurchaseAdapter.PurchaseViewHolder>() {
 
     class PurchaseViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val eventImage: ImageView = view.findViewById(R.id.eventImage)
         val eventName: TextView = view.findViewById(R.id.eventName)
         val seatNumber: TextView = view.findViewById(R.id.seatNumber)
         val purchaseDate: TextView = view.findViewById(R.id.purchaseDate)
@@ -29,10 +28,13 @@ class PurchaseAdapter(
     override fun onBindViewHolder(holder: PurchaseViewHolder, position: Int) {
         val purchase = purchases[position]
 
-        // Setear datos de la compra
-        holder.eventName.text = "Evento ID: ${purchase.eventId}" // Cambia por el nombre del evento
+        // Obtén el evento relacionado
+        val event = EventRepository.getEventById(purchase.eventId)
+
+        // Setea datos de la compra
+        holder.eventName.text = event?.sport?.name ?: "Evento desconocido"
         holder.seatNumber.text = "Asiento: ${purchase.seat}"
-        holder.purchaseDate.text = purchase.createdDate
+        holder.purchaseDate.text = "Comprado: ${purchase.createdDate}"
         holder.eventPrice.text = "$${purchase.amount}"
 
         // Usa Picasso o Glide para cargar imágenes (si las tienes)
