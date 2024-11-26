@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">JJOO</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="title_medal_table">Medal Table</string>
+    <string name="title_medal_table">Posiciones</string>
     <string name="title_event_not_found">No se encontraron eventos</string>
+    <string name="et_usuario">Usuario</string>
+    <string name="et_contrasenia">Contraseña</string>
+    <string name="btn_iniciar_sesion">Iniciar Sesión</string>
 </resources>
