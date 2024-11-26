@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">JJOO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="title_medal_table">Posiciones</string>
+    <string name="title_event_not_found">No se encontraron eventos</string>
+    <string name="et_usuario">Usuario</string>
+    <string name="et_contrasenia">Contraseña</string>
+    <string name="btn_iniciar_sesion">Iniciar Sesión</string>
+    <string name="t_ultimate_event">Ultimate Event</string>
+    <string name="t_ultimate_event_commission">3% (sábados y domingos) o 0.75% de comisión</string>
+    <string name="t_elite">Elite</string>
+    <string name="t_elite_commission">1% (20:00 - 23:59) o 3% de comisión</string>
+    <string name="t_ticket_pro">Ticket Pro</string>
+    <string name="t_ticket_pro_commission">2% de comisión</string>
+    <string name="t_app">JJOO 2024</string>
+    <string name="tv_historial">Historial</string>
+    <string name="tv_cerrar_sesion">Cerrar sesión</string>
+    <string name="btn_comprar_entrada">Comprar Entrada</string>
+    <string name="t_elegir_intermediario">Elige tu Intermediario</string>
 </resources>

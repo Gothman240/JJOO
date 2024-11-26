@@ -2,8 +2,35 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.JJOO" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-    </style>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="materialButtonStyle">@style/Button</item>
 
+        <item name="android:fontFamily">@font/plus_jakarta_sans_regular</item>
+
+    </style>
+    <style name="Button" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/blue</item>
+    </style>
+    <style name="CardViewItem">
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
+    <style name="Background">
+        <item name="android:background">@color/white</item>
+    </style>
+    <style name="logo">
+        <item name="tint">@color/blue</item>
+    </style>
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
+
+    <style name="BottomSheet">
+        <item name="android:background">@color/blue</item>
+    </style>
+    <style name="RadioButton">
+        <item name="android:backgroundTint">@color/gray</item>
+        <item name="android:layout_marginVertical">4dp</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:paddingHorizontal">12dp</item>
+        <item name="android:layoutDirection">rtl</item>
+    </style>
 </resources>
