@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="16dp"
-    android:paddingVertical="10dp"
-    style="@style/Background">
+    android:paddingVertical="10dp">
 
     <TextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:text="TextView"
         android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="TextView"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toTopOf="@+id/cardView3" />
@@ -22,8 +22,8 @@
         android:id="@+id/money"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1.000"
         android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="1.000"
         app:layout_constraintBottom_toBottomOf="@+id/nickname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name" />
@@ -44,8 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/plus_jakarta_sans_bold"
+        android:text="@string/tv_historial"
         android:textSize="20dp"
-        android:text="Historial"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3" />
 
@@ -58,16 +58,17 @@
         app:cardCornerRadius="80dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogOut">
+
         <TextView
             android:id="@+id/profilePicture"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:textSize="28sp"
             android:fontFamily="sans-serif-medium"
             android:gravity="center"
+            android:text="A"
             android:textColor="@color/white"
-            android:text="A"/>
+            android:textSize="28sp" />
 
     </androidx.cardview.widget.CardView>
 
@@ -75,25 +76,25 @@
         android:id="@+id/LogOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:clickable="true"
         android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:clickable="true">
-
+        app:layout_constraintTop_toTopOf="parent">
 
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Log out"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="8dp"
+            android:text="@string/tv_cerrar_sesion" />
+
         <ImageView
+            style="@style/logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_logout"
-            style="@style/logo"/>
+            android:src="@drawable/ic_logout" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

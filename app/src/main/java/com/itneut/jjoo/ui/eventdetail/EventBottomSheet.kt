@@ -146,18 +146,6 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         dismiss() // Cierra el Bottom Sheet
     }
 
-    private fun formatDate(
-        inputDate: String,
-        inputFormat: String = "yyyy-MM-dd",
-        outputFormat: String = "EEEE, MMMM d",
-        locale: Locale = Locale("es", "ES")
-    ): String? {
-        val inputDateFormat = SimpleDateFormat(inputFormat, locale)
-        val date = inputDateFormat.parse(inputDate)
-        val outputDateFormat = SimpleDateFormat(outputFormat, locale)
-        return outputDateFormat.format(date)
-    }
-
     private fun calculateFinalAmount(baseAmount: Double, intermediary: String): Double {
         val now = LocalDateTime.now()
         return when (intermediary) {
