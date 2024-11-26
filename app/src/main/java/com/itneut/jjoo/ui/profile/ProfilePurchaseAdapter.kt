@@ -28,17 +28,15 @@ class PurchaseAdapter(
     override fun onBindViewHolder(holder: PurchaseViewHolder, position: Int) {
         val purchase = purchases[position]
 
-        // Obtén el evento relacionado
+        // Obtener el evento
         val event = EventRepository.getEventById(purchase.eventId)
 
-        // Setea datos de la compra
+        // Setear los datos de la compra
         holder.eventName.text = event?.sport?.name ?: "Evento desconocido"
         holder.seatNumber.text = "Asiento: ${purchase.seat}"
         holder.purchaseDate.text = "Comprado: ${purchase.createdDate}"
         holder.eventPrice.text = "$${purchase.amount}"
 
-        // Usa Picasso o Glide para cargar imágenes (si las tienes)
-        // Picasso.get().load(event.image).into(holder.eventImage)
     }
 
     override fun getItemCount(): Int = purchases.size

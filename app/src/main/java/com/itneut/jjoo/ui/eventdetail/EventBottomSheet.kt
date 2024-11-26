@@ -126,7 +126,7 @@ class EventBottomSheet : BottomSheetDialogFragment() {
                 eventId = eventId!!,
                 amount = finalAmount,
                 createdDate = LocalDate.now().toString(),
-                seat = selectedIntermediary  /*Falta asiento*/
+                seat = PurchaseRepository.getSeat()
             )
         )
 

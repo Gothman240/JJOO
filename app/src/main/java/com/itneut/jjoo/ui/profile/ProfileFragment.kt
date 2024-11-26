@@ -40,7 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
             profilePicture.text = createProfilePicture(fullName)
 
             /*Falta Recycler View aquí*/
-            // Configurar RecyclerView con las compras del usuario
+            // RecyclerView con las compras del usuario
             val purchases = PurchaseRepository.get(user.id)
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.adapter = PurchaseAdapter(purchases)
