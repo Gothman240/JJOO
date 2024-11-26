@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_logo"
-            app:tint="@color/blue"/>
+            style="@style/logo"/>
 
     </androidx.cardview.widget.CardView>
 
