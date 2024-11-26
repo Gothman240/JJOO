@@ -8,15 +8,7 @@
     <fragment
         android:id="@+id/eventFragment"
         android:name="com.itneut.jjoo.ui.event.EventFragment"
-        android:label="EventFragment" >
-        <action
-            android:id="@+id/action_eventFragment_to_eventDetailFragment"
-            app:destination="@id/eventDetailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/eventDetailFragment"
-        android:name="com.itneut.jjoo.ui.eventdetail.EventDetailFragment"
-        android:label="EventDetailFragment" />
+        android:label="EventFragment" />
     <fragment
         android:id="@+id/medalFragment"
         android:name="com.itneut.jjoo.ui.medal.MedalFragment"
