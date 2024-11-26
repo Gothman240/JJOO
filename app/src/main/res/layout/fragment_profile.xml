@@ -64,6 +64,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProfile"
         android:layout_width="409dp"
         android:layout_height="537dp"
         android:layout_marginTop="8dp"
