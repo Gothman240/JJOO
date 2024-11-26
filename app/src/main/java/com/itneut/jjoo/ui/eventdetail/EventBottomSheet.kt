@@ -16,6 +16,7 @@ import com.itneut.jjoo.data.Event
 import com.itneut.jjoo.data.Purchase
 import com.itneut.jjoo.repositories.PurchaseRepository
 import com.itneut.jjoo.repositories.UserRepository
+import com.itneut.jjoo.utils.Format
 import com.squareup.picasso.Picasso
 import java.text.DecimalFormat
 import java.text.NumberFormat
@@ -68,7 +69,7 @@ class EventBottomSheet : BottomSheetDialogFragment() {
 
         view.findViewById<TextView>(R.id.eventTitle).text = "Deporte: $sportName"
         view.findViewById<TextView>(R.id.eventDate).text =
-            formatDate(date).toString().capitalize()
+            Format.date(date).toString().capitalize(Locale.ROOT)
         view.findViewById<TextView>(R.id.eventPlace).text = "Lugar: $place"
         view.findViewById<TextView>(R.id.eventPrice).text =
             "Precio: ${NumberFormat.getCurrencyInstance().format(price)}"
@@ -103,7 +104,11 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         val loggedInUser = UserRepository.loggedInUser
 
         if (loggedInUser == null) {
-            Toast.makeText(requireContext(), "Debes estar logueado para realizar una compra.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Debes estar logueado para realizar una compra.",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -132,8 +137,8 @@ class EventBottomSheet : BottomSheetDialogFragment() {
 
         Toast.makeText(
             requireContext(),
-            "Compra realizada con $selectedIntermediary! Monto total: $${
-                "%.2f".format(finalAmount)
+            "Compra realizada con $selectedIntermediary! Monto total: ${
+                Format.amount(finalAmount)
             }",
             Toast.LENGTH_LONG
         ).show()
@@ -162,11 +167,14 @@ class EventBottomSheet : BottomSheetDialogFragment() {
                 val isEvening = now.hour in 20..23
                 if (isEvening) baseAmount * 1.01 else baseAmount * 1.03
             }
+
             "UltimateEvent" -> {
                 // Si es sábado o domingo aplica 3%, sino 0.75%
-                val isWeekend = now.dayOfWeek == DayOfWeek.SATURDAY || now.dayOfWeek == DayOfWeek.SUNDAY
+                val isWeekend =
+                    now.dayOfWeek == DayOfWeek.SATURDAY || now.dayOfWeek == DayOfWeek.SUNDAY
                 if (isWeekend) baseAmount * 1.03 else baseAmount * 1.0075
             }
+
             else -> baseAmount // Si no hay intermediario válido, no se aplica comisión
         }
     }
