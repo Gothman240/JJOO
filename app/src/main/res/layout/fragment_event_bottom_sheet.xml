@@ -7,7 +7,8 @@
     android:clipToPadding="false"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    style="@style/Background">
 
     <TextView
         android:id="@+id/textView"
