@@ -40,10 +40,13 @@ class PurchaseAdapter(
         holder.purchaseDate.text = purchase.createdDate
         holder.eventPrice.text = "$${purchase.amount}"
 
+//        Picasso.get().load("https://img.freepik.com/vector-premium/icono-vectorial-futbol-puede-usarse-conjunto-iconos-juegos-olimpicos_717774-65217.jpg").into(holder.eventImage)
+
 //         Usa Picasso o Glide para cargar imágenes (si las tienes)s
-        if (event.hasNext()){
-            if (event.next().sport.id.equals(purchase.eventId)) {
-                Picasso.get().load(event.next().sport.logo).into(holder.eventImage)
+        while (event.hasNext()){
+            var eventLocal: Event= event.next()
+            if (eventLocal.sport.id.equals(purchase.eventId)) {
+                Picasso.get().load(eventLocal .sport.logo).into(holder.eventImage)
             }
         }
 

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.R
 import com.itneut.jjoo.repositories.EventRepository
+import com.itneut.jjoo.repositories.PurchaseRepository
 
 class EventFragment : Fragment(R.layout.fragment_event) {
 
@@ -68,4 +69,8 @@ class EventFragment : Fragment(R.layout.fragment_event) {
         // Actualizar la lista del RecyclerView
         eventAdapter.updateEvents(filteredEvents)
     }
+
+
+
+
 }

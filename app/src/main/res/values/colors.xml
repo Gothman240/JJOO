@@ -7,4 +7,5 @@
     <color name="secondary_text">#627e94</color>
     <color name="background_night">#111518</color>
     <color name="item_background_night">#1B2028</color>
+    <color name="black_overlay">#FFFFFFFF</color>
 </resources>

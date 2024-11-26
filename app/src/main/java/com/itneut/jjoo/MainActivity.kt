@@ -9,8 +9,18 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.itneut.jjoo.controller.NavigationController
 import com.itneut.jjoo.repositories.EventRepository
+import com.itneut.jjoo.repositories.PurchaseRepository
 import com.itneut.jjoo.ui.event.EventAdapter
 import com.itneut.jjoo.ui.event.EventFragment
+
+/*
+fun main(args: Array<String>){
+    println(PurchaseRepository.getSeat())
+    println(PurchaseRepository.getSeat())
+    println(PurchaseRepository.getSeat())
+    println(PurchaseRepository.getSeat())
+}
+*/
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var navigationController: NavigationController
@@ -28,5 +38,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         navigationController.setupNavigation()
 
     }
+
 
 }

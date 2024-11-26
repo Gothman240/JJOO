@@ -94,7 +94,7 @@ class EventBottomSheet : BottomSheetDialogFragment() {
             val finalAmount = calculateFinalAmount(baseAmount, selectedIntermediary)
             UserRepository.loggedInUser?.money = UserRepository.loggedInUser!!.money - finalAmount
             PurchaseRepository.add(Purchase(PurchaseRepository.get().size + 1L, UserRepository.loggedInUser!!.id, id!!, finalAmount,
-                LocalDate.now().toString(), selectedIntermediary))
+                LocalDate.now().toString(), PurchaseRepository.getSeat()))
             Toast.makeText(requireContext(), "Compra realizada! $selectedIntermediary", Toast.LENGTH_SHORT).show()
 
             //Cierra el BottomSheet después de la compra
