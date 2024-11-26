@@ -2,43 +2,35 @@ package com.itneut.jjoo.ui.profile
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.itneut.jjoo.R
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.itneut.jjoo.repositories.MedalTableRepository
+import com.itneut.jjoo.repositories.PurchaseRepository
 import com.itneut.jjoo.repositories.UserRepository
+import com.itneut.jjoo.ui.medal.MedalTableAdapter
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rvProfile)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.adapter = ProfileAdapter(PurchaseRepository.get())
 
-        val nickname = view.findViewById<TextView>(R.id.nickname)
         val name = view.findViewById<TextView>(R.id.name)
-        val profilePicture = view.findViewById<TextView>(R.id.profilePicture)
-        val logOut = view.findViewById<LinearLayout>(R.id.LogOut)
+        val nickname = view.findViewById<TextView>(R.id.nickname)
 
         val user = UserRepository.loggedInUser
-
-        logOut.setOnClickListener {
-            UserRepository.logout()
-            findNavController().navigate(R.id.action_profileFragment_to_logInFragment)
-        }
 
         if (user != null) {
             val fullName = "${user.name} ${user.surname}"
             name.text = fullName
             nickname.text = user.nickName
-            profilePicture.text = createProfilePicture(fullName)
-
-            /*Falta Recycler View aquí*/
 
         }
 
-    }
-
-    fun createProfilePicture(name: String): String{
-        return name.substring(0, 1).uppercase()
     }
 }
