@@ -1,6 +1,7 @@
 package com.itneut.jjoo.repositories
 
 import com.itneut.jjoo.data.Purchase
+import kotlin.random.Random
 
 object PurchaseRepository {
     private val purchases = mutableListOf<Purchase>()
@@ -28,5 +29,14 @@ object PurchaseRepository {
 
     fun get() : List<Purchase> {
         return purchases
+    }
+
+    fun getSeat(): String {
+        var seat: String
+        val random = Random
+        var column: Int = Random.nextInt (0,50)
+        var row: Char = Random.nextInt(65, 90).toChar()
+        seat = "$column$row"
+        return seat
     }
 }

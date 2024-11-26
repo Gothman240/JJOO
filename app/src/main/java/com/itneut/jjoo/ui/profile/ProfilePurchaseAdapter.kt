@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.R
 import com.itneut.jjoo.data.Purchase
 import com.itneut.jjoo.repositories.EventRepository
+import com.itneut.jjoo.utils.Format
 
 class PurchaseAdapter(
     private val purchases: List<Purchase>
@@ -34,8 +35,8 @@ class PurchaseAdapter(
         // Setea datos de la compra
         holder.eventName.text = event?.sport?.name ?: "Evento desconocido"
         holder.seatNumber.text = "Asiento: ${purchase.seat}"
-        holder.purchaseDate.text = "Comprado: ${purchase.createdDate}"
-        holder.eventPrice.text = "$${purchase.amount}"
+        holder.purchaseDate.text = "Comprado: ${Format.date(purchase.createdDate)}"
+        holder.eventPrice.text = "${Format.amount(purchase.amount)}"
 
         // Usa Picasso o Glide para cargar imágenes (si las tienes)
         // Picasso.get().load(event.image).into(holder.eventImage)

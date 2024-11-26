@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.repositories.PurchaseRepository
 import com.itneut.jjoo.repositories.UserRepository
+import com.itneut.jjoo.utils.Format
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
 
@@ -34,7 +35,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 
         if (user != null) {
             val fullName = "${user.name} ${user.surname}"
-            money.text = user.money.toString()
+            money.text = Format.amount(user.money)
             name.text = fullName
             nickname.text = user.nickName
             profilePicture.text = createProfilePicture(fullName)
