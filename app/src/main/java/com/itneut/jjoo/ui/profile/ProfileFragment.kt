@@ -15,6 +15,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         super.onViewCreated(view, savedInstanceState)
 
         val nickname = view.findViewById<TextView>(R.id.nickname)
+        val money = view.findViewById<TextView>(R.id.money)
         val name = view.findViewById<TextView>(R.id.name)
         val profilePicture = view.findViewById<TextView>(R.id.profilePicture)
         val logOut = view.findViewById<LinearLayout>(R.id.LogOut)
@@ -28,6 +29,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
 
         if (user != null) {
             val fullName = "${user.name} ${user.surname}"
+            money.text = user.money.toString()
             name.text = fullName
             nickname.text = user.nickName
             profilePicture.text = createProfilePicture(fullName)
