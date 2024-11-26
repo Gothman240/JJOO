@@ -24,7 +24,11 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.itneut.jjoo.ui.profile.ProfileFragment"
-        android:label="ProfileFragment" />
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_logInFragment"
+            app:destination="@id/logInFragment" />
+    </fragment>
     <fragment
         android:id="@+id/logInFragment"
         android:name="com.itneut.jjoo.ui.login.LogInFragment"

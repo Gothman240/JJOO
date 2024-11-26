@@ -19,4 +19,9 @@ object UserRepository {
     fun isLoggedIn(): Boolean {
         return loggedInUser != null
     }
+
+    fun logout() {
+        loggedInUser = null
+    }
+
 }
