@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import com.itneut.jjoo.R
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.itneut.jjoo.repositories.MedalTableRepository
@@ -18,7 +19,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.rvProfile)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = ProfileAdapter(PurchaseRepository.get())
+        recyclerView.adapter = ProfileAdapter(PurchaseRepository.get(-1))
 
         val name = view.findViewById<TextView>(R.id.name)
         val nickname = view.findViewById<TextView>(R.id.nickname)

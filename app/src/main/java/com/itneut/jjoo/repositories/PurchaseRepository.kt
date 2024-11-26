@@ -19,10 +19,16 @@ object PurchaseRepository {
     }
 
     fun add(purchase: Purchase) {
-        //TODO Implementar solucion para agregar una nueva compra
+        purchase.let {
+            this.purchases.add(it)
+        }
     }
 
-    fun get() : List<Purchase> {
-        return emptyList() //TODO Implementar solucion para obtener todas las compras
+    fun get(userId: Long): List<Purchase> {
+        return if (userId > 0) {
+            purchases.filter { it.id == userId }
+        } else {
+            purchases
+        }
     }
 }

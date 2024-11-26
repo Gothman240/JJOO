@@ -20,7 +20,6 @@ class ProfileAdapter(private val purchases: List<Purchase>) :
     class ProfileHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val sportValue: TextView = itemView.findViewById(R.id.tvSportValue)
         val dateValue: TextView = itemView.findViewById(R.id.tvDateValue)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileHolder {
