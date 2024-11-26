@@ -25,4 +25,8 @@ object PurchaseRepository {
     fun get(userId: Long) : List<Purchase> {
         return purchases.filter { it.userId == userId } //TODO Implementar solucion para obtener todas las compras
     }
+
+    fun get() : List<Purchase> {
+        return purchases
+    }
 }
