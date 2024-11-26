@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         style="@style/CardViewItem"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
+        android:layout_height="122dp"
         android:foregroundGravity="center"
         android:paddingBottom="8dp"
         app:cardCornerRadius="18dp"
@@ -37,14 +38,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Seat: 14A"
-                app:layout_constraintEnd_toEndOf="@+id/eventPrice"
-                app:layout_constraintTop_toTopOf="@+id/purchaseDate" />
+                app:layout_constraintStart_toStartOf="@+id/purchaseDate"
+                app:layout_constraintTop_toBottomOf="@+id/purchaseDate" />
 
             <TextView
                 android:id="@+id/purchaseDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="8dp"
                 android:text="2024-04-10"
                 app:layout_constraintStart_toStartOf="@+id/eventName"
                 app:layout_constraintTop_toBottomOf="@+id/eventName" />
