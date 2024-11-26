@@ -52,81 +52,96 @@ class EventBottomSheet : BottomSheetDialogFragment() {
         // Infla el diseño del Bottom Sheet
         val view = inflater.inflate(R.layout.fragment_event_bottom_sheet, container, false)
 
-        // Extrae los datos del Bundle
-        val id = arguments?.getLong("id")
-        val sportName = arguments?.getString("sportName")
-        val date = arguments?.getString("date")
-        val place = arguments?.getString("place")
-        val price = arguments?.getDouble("price")
-        val time = arguments?.getString("time")
-        //val sportLogo = arguments?.getString("sportLogo")
+        // Extraer datos directamente desde el Bundle
+        setupEventDetails(view)
+        setupPurchaseFunctionality(view)
 
-        // Asignando valores a los elementos de la vista
-        view.findViewById<TextView>(R.id.eventTitle).text = "Deporte: $sportName"
-        view.findViewById<TextView>(R.id.eventDate).text =
-            formatDate(date.toString()).toString().capitalize()
-        view.findViewById<TextView>(R.id.eventPlace).text = "Lugar: $place"
-        view.findViewById<TextView>(R.id.eventPrice).text =
-            "Precio: ${NumberFormat.getCurrencyInstance().format(price)}"
-        view.findViewById<TextView>(R.id.eventTime).text = "Empieza a las ${time}"
-
-        // Configuración del botón
-        val buyButton = view.findViewById<Button>(R.id.btnBuyTicket)
-        buyButton.isEnabled = false // Inicialmente desactivado
-
-        // Listener del RadioGroup
-        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupIntermediary)
-        radioGroup.setOnCheckedChangeListener { _, checkedId ->
-            if (checkedId != -1) { // Si algún RadioButton está seleccionado
-                buyButton.isEnabled = true // Activar el botón
-            }
-        }
-        // Listener para el botón "Comprar Entrada"
-        buyButton.setOnClickListener {
-            val selectedIntermediary = when (radioGroup.checkedRadioButtonId) {
-                R.id.radioUltimateEvent -> "UltimateEvent"
-                R.id.radioElite -> "Elite"
-                R.id.radioTicketPro -> "TicketPro"
-                else -> "Ninguno"
-            }
-
-            val baseAmount = price ?: 0.0
-            val finalAmount = calculateFinalAmount(baseAmount, selectedIntermediary)
-            UserRepository.loggedInUser?.money = UserRepository.loggedInUser!!.money - finalAmount
-            PurchaseRepository.add(Purchase(PurchaseRepository.get().size + 1L, UserRepository.loggedInUser!!.id, id!!, finalAmount,
-                LocalDate.now().toString(), selectedIntermediary))
-            Toast.makeText(requireContext(), "Compra realizada! $selectedIntermediary", Toast.LENGTH_SHORT).show()
-
-            //Cierra el BottomSheet después de la compra
-            dismiss()
-        }
-        //Picasso.get().load(sportLogo).resize(150, 150).centerCrop()            .into(view.findViewById<ImageView>(R.id.eventSportLogo))
         return view
     }
 
-    fun calculateFinalAmount(baseAmount: Double = 0.0, intermediary: String): Double {
-        val now = LocalDateTime.now() // Fecha y hora actual
-        val dayOfWeek = now.dayOfWeek
-        val hour = now.hour
+    private fun setupEventDetails(view: View) {
+        val sportName = arguments?.getString("sportName").orEmpty()
+        val date = arguments?.getString("date").orEmpty()
+        val place = arguments?.getString("place").orEmpty()
+        val price = arguments?.getDouble("price") ?: 0.0
+        val time = arguments?.getString("time").orEmpty()
 
-        return when (intermediary) {
-            "TicketPro" -> baseAmount * 1.02 // Comisión fija del 2%
-            "Elite" -> {
-                // Verifica si está en el rango horario de 20:00 a 23:59
-                val isDiscountHour = hour in 20..23
-                baseAmount * if (isDiscountHour) 1.01 else 1.03
-            }
-            "UltimateEvent" -> {
-                // Verifica si es sábado o domingo
-                val isWeekend = dayOfWeek == DayOfWeek.SATURDAY || dayOfWeek == DayOfWeek.SUNDAY
-                baseAmount * if (isWeekend) 1.03 else 1.0075
-            }
-            else -> baseAmount // Si no se selecciona un intermediario, no aplica comisión
+        view.findViewById<TextView>(R.id.eventTitle).text = "Deporte: $sportName"
+        view.findViewById<TextView>(R.id.eventDate).text =
+            formatDate(date).toString().capitalize()
+        view.findViewById<TextView>(R.id.eventPlace).text = "Lugar: $place"
+        view.findViewById<TextView>(R.id.eventPrice).text =
+            "Precio: ${NumberFormat.getCurrencyInstance().format(price)}"
+        view.findViewById<TextView>(R.id.eventTime).text = "Empieza a las $time"
+    }
+
+    private fun setupPurchaseFunctionality(view: View) {
+        val buyButton = view.findViewById<Button>(R.id.btnBuyTicket)
+        val radioGroup = view.findViewById<RadioGroup>(R.id.radioGroupIntermediary)
+
+        val eventId = arguments?.getLong("id")
+        val baseAmount = arguments?.getDouble("price") ?: 0.0
+
+        buyButton.isEnabled = false // Inicialmente desactivado
+        radioGroup.setOnCheckedChangeListener { _, checkedId ->
+            buyButton.isEnabled = checkedId != -1 // Activar si hay selección
+        }
+
+        buyButton.setOnClickListener {
+            handlePurchase(radioGroup, baseAmount, eventId)
         }
     }
 
+    private fun handlePurchase(radioGroup: RadioGroup, baseAmount: Double, eventId: Long?) {
+        val selectedIntermediary = when (radioGroup.checkedRadioButtonId) {
+            R.id.radioUltimateEvent -> "UltimateEvent"
+            R.id.radioElite -> "Elite"
+            R.id.radioTicketPro -> "TicketPro"
+            else -> "Ninguno"
+        }
 
-    fun formatDate(
+        val loggedInUser = UserRepository.loggedInUser
+
+        if (loggedInUser == null) {
+            Toast.makeText(requireContext(), "Debes estar logueado para realizar una compra.", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val finalAmount = calculateFinalAmount(baseAmount, selectedIntermediary)
+
+        if (loggedInUser.money < finalAmount) {
+            Toast.makeText(
+                requireContext(),
+                "No tienes suficiente dinero para realizar esta compra.",
+                Toast.LENGTH_SHORT
+            ).show()
+            return
+        }
+
+        loggedInUser.money -= finalAmount
+        PurchaseRepository.add(
+            Purchase(
+                id = PurchaseRepository.get().size + 1L,
+                userId = loggedInUser.id,
+                eventId = eventId!!,
+                amount = finalAmount,
+                createdDate = LocalDate.now().toString(),
+                seat = selectedIntermediary  /*Falta asiento*/
+            )
+        )
+
+        Toast.makeText(
+            requireContext(),
+            "Compra realizada con $selectedIntermediary! Monto total: $${
+                "%.2f".format(finalAmount)
+            }",
+            Toast.LENGTH_LONG
+        ).show()
+
+        dismiss() // Cierra el Bottom Sheet
+    }
+
+    private fun formatDate(
         inputDate: String,
         inputFormat: String = "yyyy-MM-dd",
         outputFormat: String = "EEEE, MMMM d",
@@ -134,10 +149,25 @@ class EventBottomSheet : BottomSheetDialogFragment() {
     ): String? {
         val inputDateFormat = SimpleDateFormat(inputFormat, locale)
         val date = inputDateFormat.parse(inputDate)
-
         val outputDateFormat = SimpleDateFormat(outputFormat, locale)
         return outputDateFormat.format(date)
-
     }
 
+    private fun calculateFinalAmount(baseAmount: Double, intermediary: String): Double {
+        val now = LocalDateTime.now()
+        return when (intermediary) {
+            "TicketPro" -> baseAmount * 1.02 // Aplica una comisión del 2%
+            "Elite" -> {
+                // Si la hora está entre las 20:00 y las 23:59 aplica 1%, sino 3%
+                val isEvening = now.hour in 20..23
+                if (isEvening) baseAmount * 1.01 else baseAmount * 1.03
+            }
+            "UltimateEvent" -> {
+                // Si es sábado o domingo aplica 3%, sino 0.75%
+                val isWeekend = now.dayOfWeek == DayOfWeek.SATURDAY || now.dayOfWeek == DayOfWeek.SUNDAY
+                if (isWeekend) baseAmount * 1.03 else baseAmount * 1.0075
+            }
+            else -> baseAmount // Si no hay intermediario válido, no se aplica comisión
+        }
+    }
 }
