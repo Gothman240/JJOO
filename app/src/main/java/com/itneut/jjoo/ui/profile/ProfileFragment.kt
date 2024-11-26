@@ -7,6 +7,9 @@ import android.widget.TextView
 import com.itneut.jjoo.R
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.itneut.jjoo.repositories.PurchaseRepository
 import com.itneut.jjoo.repositories.UserRepository
 
 class ProfileFragment : Fragment(R.layout.fragment_profile){
@@ -19,6 +22,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
         val name = view.findViewById<TextView>(R.id.name)
         val profilePicture = view.findViewById<TextView>(R.id.profilePicture)
         val logOut = view.findViewById<LinearLayout>(R.id.LogOut)
+        val recyclerView = view.findViewById<RecyclerView>(R.id.rvPurchases)
+
 
         val user = UserRepository.loggedInUser
 
@@ -35,6 +40,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile){
             profilePicture.text = createProfilePicture(fullName)
 
             /*Falta Recycler View aquí*/
+            // Configurar RecyclerView con las compras del usuario
+            val purchases = PurchaseRepository.get(user.id)
+            recyclerView.layoutManager = LinearLayoutManager(requireContext())
+            recyclerView.adapter = PurchaseAdapter(purchases)
 
         }
 

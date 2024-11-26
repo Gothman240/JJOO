@@ -17,13 +17,13 @@
     <style name="Background">
         <item name="android:background">@color/white</item>
     </style>
+    <style name="logo">
+        <item name="tint">@color/blue</item>
+    </style>
     <style name="Theme.JJOO" parent="Base.Theme.JJOO" />
 
     <style name="BottomSheet">
         <item name="android:background">@color/blue</item>
-    </style>
-    <style name="logo">
-        <item name="tint">@color/blue</item>
     </style>
     <style name="RadioButton">
         <item name="android:backgroundTint">@color/white</item>
